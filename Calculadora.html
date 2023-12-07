@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Partidas Ranqueadas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            color: #009688;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            color: #009688;
+        }
+
+        input {
+            padding: 8px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #009688;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #00796b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Partidas Ranqueadas</h1>
+
+    <label for="vitorias">Vitórias:</label>
+    <input type="number" id="vitorias" placeholder="Digite o número de vitórias">
+
+    <br>
+
+    <label for="derrotas">Derrotas:</label>
+    <input type="number" id="derrotas" placeholder="Digite o número de derrotas">
+
+    <br>
+
+    <button onclick="calcularRank()">Calcular</button>
+
+    <script>
+        function calcularRank() {
+            // Obtem os valores dos campos de entrada
+            const vitorias = parseInt(document.getElementById('vitorias').value);
+            const derrotas = parseInt(document.getElementById('derrotas').value);
+            
+
+            // Verifica se os valores são números válidos
+            if (isNaN(vitorias) || isNaN(derrotas)) {
+                alert('Por favor, insira valores válidos para vitórias e derrotas.');
+                return;
+            }
+
+            // Calcula o rank
+            let saldoVitorias = vitorias - derrotas;
+            let nivel;
+
+            if (saldoVitorias < 10) {
+                nivel = "Ferro";
+            } else if (saldoVitorias <= 20) {
+                nivel = "Bronze";
+            } else if (saldoVitorias <= 50) {
+                nivel = "Prata";
+            } else if (saldoVitorias <= 80) {
+                nivel = "Ouro";
+            } else if (saldoVitorias <= 90) {
+                nivel = "Diamante";
+            } else if (saldoVitorias <= 100) {
+                nivel = "Lendário";
+            } else {
+                nivel = "Imortal";
+            }
+
+            // Exibe o resultado
+            alert(`O Herói tem um saldo de ${saldoVitorias} e está no nível de ${nivel}`);
+        }
+    </script>
+</body>
+</html>
+
